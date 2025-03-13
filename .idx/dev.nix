@@ -5,13 +5,13 @@
     pkgs.nodejs_20
     pkgs.nodePackages.nodemon
     pkgs.postgresql_15
-    # pkgs.docker
+    pkgs.docker
     pkgs.openssl
-    # pkgs.docker-compose
+    pkgs.docker-compose
   ];
 
   env = {
-    DATABASE_URL = "";
+    # DATABASE_URL = "";
     # KAFKA_BOOTSTRAP_SERVERS = "";
   };
 
