@@ -26,7 +26,7 @@
 
     workspace = {
       onCreate = {
-        npm-install = "npm install --no-audit --prefer-offline";
+        # npm-install = "npm install --no-audit --prefer-offline";
         default.openFiles = [ "README.md" ];
       };
       onStart = {
