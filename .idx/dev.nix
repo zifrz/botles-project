@@ -21,7 +21,8 @@
     extensions = [
       "Prisma.prisma"
       "ms-azuretools.vscode-docker"
-      "rangav.vscode-thunder-client"
+      # "rangav.vscode-thunder-client"
+      "EchoAPI.echoapi-for-vscode"
     ];
 
     workspace = {
