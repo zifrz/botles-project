@@ -8,6 +8,7 @@
     pkgs.docker
     pkgs.openssl
     pkgs.docker-compose
+    pkgs.htop
   ];
 
   env = {
