@@ -19,3 +19,4 @@
     - ```./kafka-console-consumer.sh --topic quickstart-events --from-beginning --bootstrap-server localhost:9092```
     - In our case ```./kafka-console-consumer.sh --topic zap-events --from-beginning --bootstrap-server localhost:9092```
 - NOTE: No need to start topic again and again. Also there is no need to start consumer through shell, that is exactly the job of our worker.
+- Refer to [Kafka Quick Start](https://kafka.apache.org/quickstart) for more information
