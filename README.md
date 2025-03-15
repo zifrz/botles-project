@@ -1,3 +1,7 @@
+#### Installation
+1. ```npm i``` for hooks, processor and worker
+2. ```npx prisma generate``` for hooks, processor and worker
+
 #### Running
 1. Start Kafka Queue
 2. Run ```npm run start``` for hooks, processor, and worker
