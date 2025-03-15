@@ -17,23 +17,20 @@ const client_1 = require("@prisma/client");
 const client = new client_1.PrismaClient();
 const app = (0, express_1.default)();
 app.use(express_1.default.json());
-// https://hooks.zapier.com/hooks/catch/17043103/22b8496/
+// https://localhost:3000/hooks/catch/17043103/22b8496/
 // password logic
 app.post("/hooks/catch/:userId/:zapId", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const userId = req.params.userId;
     const zapId = req.params.zapId;
     const body = req.body;
-    console.log("reaqched here");
     // store in db a new trigger
     yield client.$transaction((tx) => __awaiter(void 0, void 0, void 0, function* () {
-        console.log("reaqched here 2");
         const run = yield client.zapRun.create({
             data: {
                 zapId: zapId,
                 metadata: body
             }
         });
-        console.log("reaqched here 3");
         yield client.zapRunOutbox.create({
             data: {
                 zapRunId: run.id

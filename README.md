@@ -1,3 +1,8 @@
+#### Running
+1. Start Kafka Queue
+2. Run ```npm run start``` for hooks, processor, and worker
+3. Hit api end-point ```http://localhost:3000/hooks/catch/1/<ID of Zap>/```
+
 #### Running a Kafka Queue (For Processor and Worker)
 1. ``` docker run -p 9092:9092 apache/kafka:3.9.0 ```
     - This will start a single container
