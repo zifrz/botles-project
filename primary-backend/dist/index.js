@@ -8,8 +8,13 @@ const user_1 = require("./router/user");
 const zap_1 = require("./router/zap");
 const cors_1 = __importDefault(require("cors"));
 const app = (0, express_1.default)();
+const corsOptions = {
+    origin: "*", // Accept requests from any origin
+    methods: ["GET", "POST", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"]
+};
 app.use(express_1.default.json());
-app.use((0, cors_1.default)());
+app.use((0, cors_1.default)(corsOptions));
 app.use("/api/v1/user", user_1.userRouter);
 app.use("/api/v1/zap", zap_1.zapRouter);
 app.listen(3000);

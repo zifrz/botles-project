@@ -5,8 +5,14 @@ import cors from "cors";
 
 const app = express();
 
+const corsOptions = {
+    origin: "*",  // Accept requests from any origin
+    methods: ["GET", "POST", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"]
+};
+
 app.use(express.json());
-app.use(cors())
+app.use(cors(corsOptions))
 
 app.use("/api/v1/user", userRouter);
 
