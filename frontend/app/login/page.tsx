@@ -19,7 +19,7 @@ export default function () {
             <div className="flex pt-8 max-w-4xl">
                 <div className="flex-1 pt-20 px-4">
                     <div className="font-semibold text-3xl pb-4">
-                        Join millions worldwide who automate their work using Zapier.
+                        Join millions worldwide who automate their work using Botles.
                     </div>
                     <div className="pb-6 pt-4">
                         <CheckFeature label={"Easy setup, no coding required"} />
@@ -39,35 +39,35 @@ export default function () {
                     }} label={"Password"} type="password" placeholder="Password"></Input>
                     <div className="pt-4">
                         <PrimaryButton onClick={async () => {
-                            try {
-                                const response = await fetch(`${BACKEND_URL}/api/v1/user/signin`, {
-                                    method: "POST",
-                                    headers: {
-                                        "Content-Type": "application/json",
-                                    },
-                                    body: JSON.stringify({
-                                        username: email,
-                                        password: password,
-                                    }),
-                                });
+                            // try {
+                            //     const response = await fetch(`${BACKEND_URL}/api/v1/user/signin`, {
+                            //         method: "POST",
+                            //         headers: {
+                            //             "Content-Type": "application/json",
+                            //         },
+                            //         body: JSON.stringify({
+                            //             username: email,
+                            //             password: password,
+                            //         }),
+                            //     });
 
-                                if (!response.ok) {
-                                    throw new Error(`HTTP error! Status: ${response.status}`);
-                                }
+                            //     if (!response.ok) {
+                            //         throw new Error(`HTTP error! Status: ${response.status}`);
+                            //     }
 
-                                const data = await response.json();
-                                localStorage.setItem("token", data.token);
-                                router.push("/dashboard");
-                            } catch (error) {
-                                console.error("Login error:", error);
-                                alert("Login failed. Please check your credentials and try again.");
-                            }
-                            // const res = await axios.post(`${BACKEND_URL}/api/v1/user/signin`, {
-                            //     username: email,
-                            //     password,
-                            // });
-                            // localStorage.setItem("token", res.data.token);
-                            // router.push("/dashboard");
+                            //     const data = await response.json();
+                            //     localStorage.setItem("token", data.token);
+                            //     router.push("/dashboard");
+                            // } catch (error) {
+                            //     console.error("Login error:", error);
+                            //     alert("Login failed. Please check your credentials and try again.");
+                            // }
+                            const res = await axios.post(`${BACKEND_URL}/api/v1/user/signin`, {
+                                username: email,
+                                password,
+                            });
+                            localStorage.setItem("token", res.data.token);
+                            router.push("/dashboard");
                         }} size="big">Login</PrimaryButton>
                     </div>
                 </div>

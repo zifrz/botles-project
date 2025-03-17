@@ -124,6 +124,8 @@ To run Kafka locally, follow these steps:
     -   You only need to create the topic once, per each Docker Kafka Container.
     -   The consumer will be automatically managed by the worker service, so no need to manually start it through the shell.
 
-----------
-
 For more information on Kafka, refer to the [Kafka Quick Start Guide](https://kafka.apache.org/quickstart).
+
+----------
+> **Note:**
+- If you are NOT using Google's Project IDX, make sure to change the backend URL at `frontend/app/login/page.tsx` to `http://localhost:3000`
