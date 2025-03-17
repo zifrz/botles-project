@@ -39,29 +39,6 @@ export default function () {
                     }} label={"Password"} type="password" placeholder="Password"></Input>
                     <div className="pt-4">
                         <PrimaryButton onClick={async () => {
-                            // try {
-                            //     const response = await fetch(`${BACKEND_URL}/api/v1/user/signin`, {
-                            //         method: "POST",
-                            //         headers: {
-                            //             "Content-Type": "application/json",
-                            //         },
-                            //         body: JSON.stringify({
-                            //             username: email,
-                            //             password: password,
-                            //         }),
-                            //     });
-
-                            //     if (!response.ok) {
-                            //         throw new Error(`HTTP error! Status: ${response.status}`);
-                            //     }
-
-                            //     const data = await response.json();
-                            //     localStorage.setItem("token", data.token);
-                            //     router.push("/dashboard");
-                            // } catch (error) {
-                            //     console.error("Login error:", error);
-                            //     alert("Login failed. Please check your credentials and try again.");
-                            // }
                             const res = await axios.post(`${BACKEND_URL}/api/v1/user/signin`, {
                                 username: email,
                                 password,
