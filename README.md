@@ -82,6 +82,13 @@ After setting up the database, use the provided connection string.
     DATABASE_URL="postgresql://johndoe:mysecretpassword@localhost:5432/mydb?schema=public"
     ```
     
+### 3. Seeding PostgreSQL Database
+
+Use the following command to seed the database:
+
+```bash    
+npx prisma db seed
+```
 
 ----------
 
