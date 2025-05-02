@@ -99,7 +99,7 @@ To run Kafka locally, follow these steps:
 1.  **Start Kafka Container**: Run the following Docker command to start Kafka:
     
     ```bash
-    docker run -p 9092:9092 apache/kafka:3.9.0
+    docker run --name kafka -p 9092:9092 -u root apache/kafka:3.9.0
     ```
     
 2.  **Access Kafka Container**: To access the Kafka container:
