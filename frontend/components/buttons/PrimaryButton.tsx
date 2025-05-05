@@ -1,11 +1,28 @@
-import { ReactNode } from "react"
+// frontend/components/buttons/PrimaryButton.tsx
+import { ReactNode } from "react";
+import { getButtonSizeClasses } from "./buttonUtils";
 
-export const PrimaryButton = ({ children, onClick, size = "small" }: {
-    children: ReactNode,
-    onClick: () => void,
-    size?: "big" | "small"
+export const PrimaryButton = ({
+  children,
+  onClick,
+  size = "small",
+  fullWidth = false,
+  disable = false
+}: {
+  children: ReactNode;
+  onClick: () => void;
+  size?: "big" | "small";
+  fullWidth?: boolean;
+  disable?: boolean;
 }) => {
-    return <button onClick={onClick} className={`${size === "small" ? "text-sm" : "text-xl"} ${size === "small" ? "px-8 py-2" : "px-10 py-4  w-md"} cursor-pointer bg-amber-600 hover:bg-amber-700 hover:shadow-md  text-white rounded-full text-center flex justify-center items-center flex-col`}>
-        {children}
+  return (
+    <button
+      onClick={onClick}
+      className={`inline-flex items-center justify-center bg-amber-600 text-white hover:bg-amber-700 rounded-full hover:shadow-lg transition-shadow ${getButtonSizeClasses(size)} ${
+        fullWidth ? "w-full" : ""
+      } ${disable ? "cursor-not-allowed opacity-50" : ""}`}
+    >
+      {children}
     </button>
-}
+  );
+};

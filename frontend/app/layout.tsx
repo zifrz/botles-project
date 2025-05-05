@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import { Appbar } from "@/components/Appbar";
-import { useEffect, useState } from "react";
 import { ClientLayout } from "./ClientLayout";
 
 const geistSans = Geist({
@@ -31,8 +29,6 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <ClientLayout>{children}</ClientLayout>
-        {/* <Appbar isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
-        {children} */}
       </body>
     </html>
   );

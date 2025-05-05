@@ -1,11 +1,21 @@
-import { ReactNode } from "react"
+import { ReactNode } from "react";
+import { getButtonSizeClasses } from "./buttonUtils";
 
-export const SecondaryButton = ({ children, onClick, size = "small" }: {
-    children: ReactNode,
-    onClick: () => void,
-    size?: "big" | "small"
+export const SecondaryButton = ({
+  children,
+  onClick,
+  size = "small"
+}: {
+  children: ReactNode;
+  onClick: () => void;
+  size?: "big" | "small";
 }) => {
-    return <button onClick={onClick} className={`${size === "small" ? "text-sm" : "text-xl"} ${size === "small" ? "px-8 pt-2" : "px-10 py-4"} cursor-pointer hover:shadow-md border text-black border-black rounded-full`}>
-        {children}
+  return (
+    <button
+      onClick={onClick}
+      className={`inline-flex items-center justify-center border border-black text-black rounded-full hover:shadow-md transition-shadow ${getButtonSizeClasses(size)}`}
+    >
+      {children}
     </button>
-}
+  );
+};

@@ -1,5 +1,4 @@
 "use client";
-import { Appbar } from "@/components/Appbar";
 import { CheckFeature } from "@/components/CheckFeature";
 import { Input } from "@/components/Input";
 import { PrimaryButton } from "@/components/buttons/PrimaryButton";
@@ -8,52 +7,94 @@ import { useState } from "react";
 import { BACKEND_URL } from "../config";
 import { useRouter } from "next/navigation";
 
-export default function () {
-    const router = useRouter();
+export default function SignupPage() {
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState("");
+    const router = useRouter();
 
-    return <div>
-        {/* <Appbar /> */}
-        <div className="flex justify-center">
-            <div className="flex pt-8 max-w-4xl">
-                <div className="flex-1 pt-20 px-4">
-                    <div className="font-semibold text-3xl pb-4">
-                        Join those who automate their work using Botles.
-                    </div>
-                    <div className="pb-6 pt-4">
-                        <CheckFeature label={"Easy setup, no coding required"} />
-                    </div>
-                    <div className="pb-6">
-                        <CheckFeature label={"Free forever for core features"} />
-                    </div>
-                    <CheckFeature label={"14-day trial of premium features & apps"} />
+    const handleSignup = async () => {
+        try {
+            setLoading(true);
+            setError("");
+            await axios.post(`${BACKEND_URL}/api/v1/user/signup`, {
+                username: email,
+                password,
+                name
+            });
+            router.push("/login");
+        } catch (err: any) {
+            setError("Signup failed. Please try again.");
+        } finally {
+            setLoading(false);
+        }
+    };
 
+    return (
+        <main className="min-h-[calc(100vh-96px)] flex items-center justify-center px-4 bg-white">
+            <div className="max-w-5xl w-full grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                {/* Left: Marketing content */}
+                <div className="flex flex-col justify-center">
+                    <h1 className="text-3xl font-bold text-gray-900 mb-6 leading-tight">
+                        Join millions worldwide who automate their work using{" "}
+                        <span className="text-amber-600">Botles</span>.
+                    </h1>
+                    <div className="space-y-4 text-gray-700 text-sm">
+                        <CheckFeature label="Easy setup, no coding required" />
+                        <CheckFeature label="Free forever for core features" />
+                        <CheckFeature label="14-day trial of premium features & apps" />
+                    </div>
                 </div>
-                <div className="flex-1 pt-6 pb-6 mt-12 px-4 border-1 border-gray-300 rounded">
-                    <Input label={"Name"} onChange={e => {
-                        setName(e.target.value)
-                    }} type="text" placeholder="Your name"></Input>
-                    <Input onChange={e => {
-                        setEmail(e.target.value)
-                    }} label={"Email"} type="text" placeholder="Your Email"></Input>
-                    <Input onChange={e => {
-                        setPassword(e.target.value)
-                    }} label={"Password"} type="password" placeholder="Password"></Input>
 
-                    <div className="pt-4">
-                        <PrimaryButton onClick={async () => {
-                            const res = await axios.post(`${BACKEND_URL}/api/v1/user/signup`, {
-                                username: email,
-                                password,
-                                name
-                            });
-                            router.push("/login");
-                        }} size="big">Get started free</PrimaryButton>
+                {/* Right: Signup form */}
+                <div className="border border-gray-200 rounded-xl p-6 shadow-sm w-full">
+                    <div className="space-y-5">
+                        <div>
+                            <Input
+                                label="Name"
+                                onChange={(e) => setName(e.target.value)}
+                                type="text"
+                                placeholder="Your name"
+                            />
+                        </div>
+
+                        <div>
+                            <Input
+                                label="Email"
+                                onChange={(e) => setEmail(e.target.value)}
+                                type="email"
+                                placeholder="you@example.com"
+                            />
+                        </div>
+
+                        <div>
+                            <Input
+                                onChange={(e) => setPassword(e.target.value)}
+                                type="password"
+                                placeholder="Your secure password"
+                                label="Password"
+                            />
+                        </div>
+
+                        {error && (
+                            <div className="text-red-500 text-sm">{error}</div>
+                        )}
+
+                        <div className="pt-2">
+                            <PrimaryButton
+                                onClick={handleSignup}
+                                size="big"
+                                fullWidth
+                                disable={loading}
+                            >
+                                {loading ? "Creating account..." : "Get started free"}
+                            </PrimaryButton>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
+        </main>
+    );
 }
