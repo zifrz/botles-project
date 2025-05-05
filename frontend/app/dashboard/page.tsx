@@ -60,7 +60,7 @@ export default function() {
     const router = useRouter();
     
     return <div>
-        <Appbar />
+        {/* <Appbar /> */}
         <div className="flex justify-center pt-8">
             <div className="max-w-screen-lg	 w-full">
                 <div className="flex justify-between pr-8 ">

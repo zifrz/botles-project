@@ -14,7 +14,7 @@ export default function () {
     const router = useRouter();
 
     return <div>
-        <Appbar />
+        {/* <Appbar /> */}
         <div className="flex justify-center">
             <div className="flex pt-8 max-w-4xl">
                 <div className="flex-1 pt-20 px-4">
@@ -45,6 +45,7 @@ export default function () {
                             });
                             localStorage.setItem("token", res.data.token);
                             router.push("/dashboard");
+                            window.dispatchEvent(new Event("storage")); // Temporary solution until we implement proper state management
                         }} size="big">Login</PrimaryButton>
                     </div>
                 </div>
